@@ -40,7 +40,6 @@ h1 {
     padding: 10px;
     overflow-x: auto;
     gap: 10px;
-    justify-content: center;
     position: sticky;
 
     top: 90px;
