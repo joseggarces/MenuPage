@@ -12,50 +12,101 @@ body {
     padding-bottom: 20px;
 }
 
+/* Header mejorado y más compacto */
 header {
     background: linear-gradient(135deg, #c79850 0%, #8b6914 100%);
-    padding: 25px 20px;
-    text-align: center;
+    padding: 15px 20px;
     box-shadow: 0 4px 20px rgba(199, 152, 80, 0.3);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
 h1 {
-    font-size: 2em;
-    margin-bottom: 5px;
+    font-size: 1.5em;
+    line-height: 1;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .subtitle {
-    font-size: 0.9em;
+    font-size: 0.75em;
     opacity: 0.9;
     letter-spacing: 2px;
+    font-weight: 500;
+}
+
+/* Navegación mejorada */
+.tabs-container {
+    background: #2d2d2d;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 80px; /* Altura del header reducido */
+    z-index: 99;
 }
 
 .tabs {
     display: flex;
-    background: #2d2d2d;
-    padding: 10px;
+    padding: 8px 15px;
     overflow-x: auto;
-    gap: 10px;
-    position: sticky;
-    top: 90px;
-    z-index: 99;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    gap: 8px;
+    max-width: 1200px;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.tabs::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tabs::-webkit-scrollbar-thumb {
+    background: #c79850;
+    border-radius: 2px;
 }
 
 .tab {
-    padding: 12px 20px;
+    padding: 10px 18px;
     background: #3d3d3d;
     border: none;
     color: #fff;
-    border-radius: 25px;
+    border-radius: 20px;
     cursor: pointer;
     white-space: nowrap;
-    transition: all 0.3s;
-    font-size: 0.95em;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: fit-content;
+    font-weight: 500;
+}
+
+.tab-icon {
+    font-size: 1.1em;
 }
 
 .tab:hover {
@@ -68,6 +119,11 @@ h1 {
     box-shadow: 0 4px 15px rgba(199, 152, 80, 0.4);
 }
 
+.tab:active {
+    transform: scale(0.98);
+}
+
+/* Contenido */
 .content {
     padding: 20px;
     max-width: 600px;
@@ -80,7 +136,7 @@ h1 {
 
 .category {
     margin-bottom: 30px;
-    scroll-margin-top: 140px; /* Para que al hacer scroll quede debajo del header y tabs */
+    scroll-margin-top: 150px; /* Header (80px) + Nav (~70px) */
 }
 
 .category-title {
@@ -167,21 +223,7 @@ h1 {
     font-size: 0.9em;
 }
 
-::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #2d2d2d;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #c79850;
-    border-radius: 4px;
-}
-
-/* Estilos para las secciones específicas cuando se navega */
+/* Animación de highlight */
 .category:target {
     animation: highlight 2s ease;
 }
@@ -192,5 +234,43 @@ h1 {
     }
     100% {
         background: transparent;
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .logo {
+        height: 40px;
+    }
+    
+    h1 {
+        font-size: 1.3em;
+    }
+    
+    .subtitle {
+        font-size: 0.7em;
+    }
+    
+    .tab {
+        padding: 8px 14px;
+        font-size: 0.85em;
+    }
+    
+    .tab-text {
+        display: inline;
+    }
+}
+
+@media (max-width: 360px) {
+    .tab-text {
+        display: none;
+    }
+    
+    .tab {
+        padding: 10px;
+    }
+    
+    .tab-icon {
+        font-size: 1.3em;
     }
 }
