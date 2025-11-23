@@ -39,6 +39,26 @@ async function cargarMenu() {
 }
 
 // ---------- NAVEGACIÓN ----------
+function getStickyOffset() {
+    const header = document.querySelector('header');
+    const tabsContainer = document.querySelector('.tabs-container');
+    return (header ? header.offsetHeight : 0) + (tabsContainer ? tabsContainer.offsetHeight : 0);
+}
+
+function applyLayoutOffsets() {
+    const header = document.querySelector('header');
+    const tabsContainer = document.querySelector('.tabs-container');
+    const content = document.querySelector('.content');
+    const headerH = header ? header.offsetHeight : 0;
+    if (tabsContainer) {
+        tabsContainer.style.top = headerH + 'px';
+    }
+    const reserve = headerH + (tabsContainer ? tabsContainer.offsetHeight : 0);
+    if (content) {
+        content.style.paddingTop = reserve + 10 + 'px';
+    }
+}
+
 function scrollToSection(sectionId) {
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => tab.classList.remove('active'));
@@ -53,18 +73,17 @@ function scrollToSection(sectionId) {
 
     const targetCategory = document.querySelector(`.category-${sectionId}`);
     if (targetCategory) {
-        targetCategory.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        targetCategory.style.animation = 'none';
-        setTimeout(() => {
-            targetCategory.style.animation = 'highlight 2s ease';
-        }, 10);
+        const totalOffset = getStickyOffset();
+        const targetTop = targetCategory.getBoundingClientRect().top + window.scrollY;
+        const desiredTop = Math.max(0, targetTop - totalOffset - 8);
+        window.scrollTo({ top: desiredTop, behavior: 'smooth' });
     }
 }
 
 function updateActiveTab() {
     const categories = document.querySelectorAll('.category');
     const tabs       = document.querySelectorAll('.tab');
-    const scrollPos  = window.scrollY + 150;
+    const scrollPos  = window.scrollY + getStickyOffset() + 5;
 
     const tabSections = Array.from(tabs)
         .map(tab => {
@@ -97,7 +116,12 @@ window.addEventListener('scroll', () => {
     scrollTimeout = setTimeout(updateActiveTab, 50);
 });
 
+window.addEventListener('resize', applyLayoutOffsets);
+
 // ---------- INICIO ----------
 document.addEventListener('DOMContentLoaded', () => {
-    cargarMenu().then(updateActiveTab);
+    cargarMenu().then(() => {
+        updateActiveTab();
+        applyLayoutOffsets();
+    });
 });
