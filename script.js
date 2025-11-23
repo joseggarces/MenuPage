@@ -1,119 +1,103 @@
+// ---------- CARGA DINÁMICA DEL MENÚ ----------
+async function cargarMenu() {
+    const response = await fetch('menu.json');
+    const menu     = await response.json();
+
+    const content  = document.querySelector('.content');
+    content.innerHTML = '';
+
+    const orden = ['tragos','cervezas','pizzas','lomos','papas','helados','gaseosas'];
+    const menuOrdenado = menu
+        .filter(seccion => orden.includes(seccion.categoria))
+        .sort((a, b) => orden.indexOf(a.categoria) - orden.indexOf(b.categoria));
+
+    menuOrdenado.forEach(seccion => {
+        const sectionDiv = document.createElement('div');
+        sectionDiv.className = `category category-${seccion.categoria}`;
+        sectionDiv.id        = seccion.categoria;
+
+        sectionDiv.innerHTML = `<h2 class="category-title">${seccion.icono} ${seccion.titulo}</h2>`;
+
+        seccion.items.forEach(item => {
+            const itemDiv      = document.createElement('div');
+            itemDiv.className  = 'menu-item';
+
+            const precio = item.precio ? `$${item.precio.toLocaleString('es-AR')}` : '$??';
+
+            itemDiv.innerHTML = `
+                <div class="item-header">
+                    <span class="item-name">${item.nombre}</span>
+                    <span class="item-price">${precio}</span>
+                </div>
+                ${item.descripcion ? `<div class="item-description">${item.descripcion}</div>` : ''}
+            `;
+            sectionDiv.appendChild(itemDiv);
+        });
+
+        content.appendChild(sectionDiv);
+    });
+}
+
+// ---------- NAVEGACIÓN ----------
 function scrollToSection(sectionId) {
-    // Actualizar pestañas activas
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => tab.classList.remove('active'));
-    
-    // Encontrar y activar la pestaña correspondiente
+
     const activeTab = Array.from(tabs).find(tab =>
         tab.getAttribute('onclick').includes(sectionId)
     );
     if (activeTab) {
         activeTab.classList.add('active');
-        
-        // Auto-scroll horizontal para mostrar la pestaña activa
-        activeTab.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
-        });
+        activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
-    
-    // Desplazamiento suave a la sección correspondiente
-    if (sectionId === 'todo') {
-        // Ir al inicio de la página
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    } else {
-        // Encontrar la categoría correspondiente
-        const targetCategory = document.querySelector(`.category-${sectionId}`);
-        if (targetCategory) {
-            targetCategory.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            
-            // Agregar efecto de highlight
-            targetCategory.style.animation = 'none';
-            setTimeout(() => {
-                targetCategory.style.animation = 'highlight 2s ease';
-            }, 10);
-        }
+
+    const targetCategory = document.querySelector(`.category-${sectionId}`);
+    if (targetCategory) {
+        targetCategory.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        targetCategory.style.animation = 'none';
+        setTimeout(() => {
+            targetCategory.style.animation = 'highlight 2s ease';
+        }, 10);
     }
 }
-
-// Detección de scroll para actualizar pestaña activa automáticamente
-let scrollTimeout;
-window.addEventListener('scroll', function() {
-    // Debounce para mejor rendimiento
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        updateActiveTab();
-    }, 50);
-});
 
 function updateActiveTab() {
     const categories = document.querySelectorAll('.category');
-    const tabs = document.querySelectorAll('.tab');
-    
-    // Offset que coincide con el scroll-margin-top del CSS
-    const scrollPosition = window.scrollY + 150;
-    
-    let currentSection = 'todo';
-    
-    categories.forEach(category => {
-        // Verificar si la posición de scroll está pasando el inicio de la categoría
-        if (scrollPosition >= category.offsetTop) {
-            // Extraer el nombre de la sección de las clases de la categoría
-            const sectionClass = Array.from(category.classList).find(cls => cls.startsWith('category-'));
-            if (sectionClass) {
-                currentSection = sectionClass.replace('category-', '');
+    const tabs       = document.querySelectorAll('.tab');
+    const scrollPos  = window.scrollY + 150;
+
+    const tabSections = Array.from(tabs)
+        .map(tab => {
+            const s = tab.getAttribute('onclick');
+            const m = s && s.match(/'([^']+)'/);
+            return m ? m[1] : null;
+        })
+        .filter(Boolean);
+
+    let currentSection = tabSections[0] || null;
+    categories.forEach(cat => {
+        if (scrollPos >= cat.offsetTop) {
+            const cls = Array.from(cat.classList).find(c => c.startsWith('category-'));
+            if (cls) {
+                const sec = cls.replace('category-', '');
+                if (tabSections.includes(sec)) currentSection = sec;
             }
         }
     });
-    
-    // Actualizar pestaña activa basado en scroll
+
     tabs.forEach(tab => {
-        const isActive = tab.getAttribute('onclick').includes(currentSection);
-        tab.classList.toggle('active', isActive);
+        const isActive = currentSection && tab.getAttribute('onclick').includes(currentSection);
+        tab.classList.toggle('active', !!isActive);
     });
 }
 
-// Mejorar el scroll horizontal de las tabs en móvil
-const tabsContainer = document.querySelector('.tabs');
-if (tabsContainer) {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(updateActiveTab, 50);
+});
 
-    tabsContainer.addEventListener('mousedown', (e) => {
-        isDown = true;
-        tabsContainer.style.cursor = 'grabbing';
-        startX = e.pageX - tabsContainer.offsetLeft;
-        scrollLeft = tabsContainer.scrollLeft;
-    });
-
-    tabsContainer.addEventListener('mouseleave', () => {
-        isDown = false;
-        tabsContainer.style.cursor = 'grab';
-    });
-
-    tabsContainer.addEventListener('mouseup', () => {
-        isDown = false;
-        tabsContainer.style.cursor = 'grab';
-    });
-
-    tabsContainer.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - tabsContainer.offsetLeft;
-        const walk = (x - startX) * 2;
-        tabsContainer.scrollLeft = scrollLeft - walk;
-    });
-}
-
-// Inicializar al cargar la página
+// ---------- INICIO ----------
 document.addEventListener('DOMContentLoaded', () => {
-    updateActiveTab();
+    cargarMenu().then(updateActiveTab);
 });

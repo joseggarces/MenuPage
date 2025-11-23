@@ -17,16 +17,16 @@
             </div>
         </div>
     </header>
-    
+
     <nav class="tabs-container">
         <div class="tabs">
-            <button class="tab active" onclick="scrollToSection('todo')">
-                <span class="tab-icon">📋</span>
-                <span class="tab-text">Todo</span>
-            </button>
-            <button class="tab" onclick="scrollToSection('tragos')">
+            <button class="tab active" onclick="scrollToSection('tragos')">
                 <span class="tab-icon">🍸</span>
                 <span class="tab-text">Tragos</span>
+            </button>
+            <button class="tab" onclick="scrollToSection('cervezas')">
+                <span class="tab-icon">🍺</span>
+                <span class="tab-text">Cervezas</span>
             </button>
             <button class="tab" onclick="scrollToSection('pizzas')">
                 <span class="tab-icon">🍕</span>
@@ -36,154 +36,25 @@
                 <span class="tab-icon">🥩</span>
                 <span class="tab-text">Lomos</span>
             </button>
-            <button class="tab" onclick="scrollToSection('aperitivos')">
-                <span class="tab-icon">🧂</span>
-                <span class="tab-text">Aperitivos</span>
+            <button class="tab" onclick="scrollToSection('papas')">
+                <span class="tab-icon">🍟</span>
+                <span class="tab-text">Papas</span>
+            </button>
+            <button class="tab" onclick="scrollToSection('helados')">
+                <span class="tab-icon">🍦</span>
+                <span class="tab-text">Helados</span>
+            </button>
+            <button class="tab" onclick="scrollToSection('gaseosas')">
+                <span class="tab-icon">🥤</span>
+                <span class="tab-text">Gaseosas</span>
             </button>
         </div>
     </nav>
 
     <div class="content">
-        <!-- TODO -->
-        <div id="todo" class="section active">
-            <div class="category category-tragos">
-                <h2 class="category-title">Tragos</h2>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Fernet</span>
-                        <span class="item-price">$4.500</span>
-                    </div>
-                    <div class="item-description">Hielo, Fernet Branca, Coca Cola</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Gancia</span>
-                        <span class="item-price">$4.000</span>
-                    </div>
-                    <div class="item-description">Hielo, Jugo de limón, Gancia, Sprite</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Negroni</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Vermut rojo, ginebra, campari, naranja</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Baileys Frozen</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Baileys, vodka, helado de crema americana y chocolate</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Caipiriña</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Cachaca, lima maserada, Sprite y azucar</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Mojito</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Ron blanco, lima y menta maserada, agua tonica y azucar</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Laguna Azul</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Vodka, licor blue curacao, Sprite y lima</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Malibú</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Ron Malibú, granadina, jugo de piña y naranja</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Gin Tonic Clasico</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Gin, agua tónica y limón</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Gin Tonic Frutos Rojos</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Gin, agua tonica y frutos rojos</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Sex on the Beach</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Vodka, licor de durazno, jugo de naranja y granadina</div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Daiquiri de frutilla</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                    <div class="item-description">Ron, frutillas maceradas, jugo de lima y naranja y azucar</div>
-                </div>
-            </div>
-            <div class="category category-pizzas">
-                <h2 class="category-title">Pizzas</h2>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Muza</span><span class="item-price">$10.000</span></div><div class="item-description">Masa casera, salsa, muzzarella, aceituna</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Fuga</span><span class="item-price">$12.500</span></div><div class="item-description">Masa casera, salsa, cebolla caramelizada, muzzarella, aceitunas</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Anchoa</span><span class="item-price">$13.500</span></div><div class="item-description">Masa casera, salsa, muzzarella, anchoas, aceitunas</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Palmito</span><span class="item-price">$13.500</span></div><div class="item-description">Masa casera, salsa, jamón cocido, muzzarella, palmitos, salsa golf, aceitunas</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Jamón y Morrones</span><span class="item-price">$12.500</span></div><div class="item-description">Masa casera, salsa, jamón cocido, muzzarella, morrones, aceitunas</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Napo</span><span class="item-price">$12.500</span></div><div class="item-description">Masa casera, salsa, jamón cocido, muzzarella, tomate, aceitunas</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Bomba</span><span class="item-price">$14.500</span></div><div class="item-description">Masa casera, salsa, jamón cocido, muzzarella, huevos, papas, aceitunas</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Roquefort</span><span class="item-price">$13.000</span></div><div class="item-description">Masa casera, salsa, tomate, muzzarella, roquefort, aceitunas</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Cantimpalo</span><span class="item-price">$12.500</span></div><div class="item-description">Masa casera, salsa, muzzarella, cantimpalo, aceitunas</div></div>
-                <div class="menu-item"><div class="item-header"><span class="item-name">Huevo</span><span class="item-price">$13.000</span></div><div class="item-description">Masa casera, salsa, jamón cocido, muzzarella, huevo, aceitunas</div></div>
-            </div>
-            <div class="category category-lomos">
-                <h2 class="category-title">Lomos</h2>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Lomo Sandwich</span>
-                        <span class="item-price">$15.000</span>
-                    </div>
-                    <div class="item-description">
-                        Pan casero, mayonesa, jamón cocido, lomo vacuno, muzzarella, huevo, lechuga, tomate — con fritas
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Lomo al Plato</span>
-                        <span class="item-price">$15.000</span>
-                    </div>
-                    <div class="item-description">
-                        Lomo vacuno, jamón cocido, muzzarella, huevo, tomate y lechuga y/o fritas
-                    </div>
-                </div>
-            </div>
-            <div class="category category-aperitivos">
-                <h2 class="category-title">Aperitivos</h2>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Maní</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-header">
-                        <span class="item-name">Papas Fritas</span>
-                        <span class="item-price">$??</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- El menú se cargará dinámicamente desde menu.json -->
     </div>
+
     <div class="footer">
         <p>📍 Nueva Galia, San Luis, Argentina</p>
         <p>📞 Reservas: (266) 123-4567</p>

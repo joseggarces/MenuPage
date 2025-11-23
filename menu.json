@@ -1,0 +1,87 @@
+[
+  {
+    "categoria": "tragos",
+    "titulo": "Tragos",
+    "icono": "🍸",
+    "items": [
+      { "nombre": "Fernet", "precio": 4500, "descripcion": "Hielo, Fernet Branca, Coca Cola" },
+      { "nombre": "Gancia", "precio": 4500, "descripcion": "Hielo, Jugo de limón, Gancia, Sprite" },
+      { "nombre": "Whisky Jameson", "precio": 6000, "descripcion": "Whisky Jameson, hielo" },
+      { "nombre": "Baileys Frozen", "precio": 8000, "descripcion": "Baileys, vodka, helado de crema americana y chocolate" },
+      { "nombre": "Laguna Azul", "precio": 6000, "descripcion": "Vodka, licor blue curacao, Sprite y lima" },
+      { "nombre": "Malibú", "precio": 6000, "descripcion": "Ron Malibú, granadina, jugo de piña y naranja" },
+      { "nombre": "Gin Tonic Clasico", "precio": 7000, "descripcion": "Gin, agua tónica y limón" },
+      { "nombre": "Gin Tonic Frutos Rojos", "precio": 8000, "descripcion": "Gin, agua tonica y frutos rojos" },
+      { "nombre": "Sex on the Beach", "precio": 6000, "descripcion": "Vodka, licor de durazno, jugo de naranja y granadina" },
+      { "nombre": "Negroni", "precio": 6000, "descripcion": "Vermut rojo, ginebra, campari, naranja" }
+    ]
+  },
+  {
+    "categoria": "cervezas",
+    "titulo": "Cervezas",
+    "icono": "🍺",
+    "items": [
+      { "nombre": "Patagonia", "precio": 7000 },
+      { "nombre": "Andes", "precio": 6000 },
+      { "nombre": "Stella", "precio": 8000 },
+      { "nombre": "Corona", "precio": 8000 },
+      { "nombre": "Quilmes Stout", "precio": 6000 }
+    ]
+  },
+  {
+    "categoria": "pizzas",
+    "titulo": "Pizzas",
+    "icono": "🍕",
+    "items": [
+      { "nombre": "Muza", "precio": 10000, "descripcion": "Masa casera, salsa, muzzarella, aceituna" },
+      { "nombre": "Fuga", "precio": 12500, "descripcion": "Masa casera, salsa, cebolla caramelizada, muzzarella, aceitunas" },
+      { "nombre": "Anchoa", "precio": 13500, "descripcion": "Masa casera, salsa, muzzarella, anchoas, aceitunas" },
+      { "nombre": "Palmito", "precio": 13500, "descripcion": "Masa casera, salsa, jamón cocido, muzzarella, palmitos, salsa golf, aceitunas" },
+      { "nombre": "Jamón y Morrones", "precio": 12500, "descripcion": "Masa casera, salsa, jamón cocido, muzzarella, morrones, aceitunas" },
+      { "nombre": "Napo", "precio": 12500, "descripcion": "Masa casera, salsa, jamón cocido, muzzarella, tomate, aceitunas" },
+      { "nombre": "Bomba", "precio": 14500, "descripcion": "Masa casera, salsa, jamón cocido, muzzarella, huevos, papas, aceitunas" },
+      { "nombre": "Roquefort", "precio": 13000, "descripcion": "Masa casera, salsa, tomate, muzzarella, roquefort, aceitunas" },
+      { "nombre": "Cantimpalo", "precio": 12500, "descripcion": "Masa casera, salsa, muzzarella, cantimpalo, aceitunas" },
+      { "nombre": "Huevo", "precio": 13000, "descripcion": "Masa casera, salsa, jamón cocido, muzzarella, huevo, aceitunas" }
+    ]
+  },
+  {
+    "categoria": "lomos",
+    "titulo": "Lomos",
+    "icono": "🥩",
+    "items": [
+      { "nombre": "Lomo Sandwich", "precio": 15000, "descripcion": "Pan casero, mayonesa, jamón cocido, lomo vacuno, muzzarella, huevo, lechuga, tomate — con fritas" },
+      { "nombre": "Lomo al Plato", "precio": 15000, "descripcion": "Lomo vacuno, jamón cocido, muzzarella, huevo, tomate y lechuga y/o fritas" }
+    ]
+  },
+  {
+    "categoria": "papas",
+    "titulo": "Papas",
+    "icono": "🍟",
+    "items": [
+      { "nombre": "Porción papas", "precio": 6000 },
+      { "nombre": "Porción papas chedar y panceta", "precio": 8500 }
+    ]
+  },
+  {
+    "categoria": "helados",
+    "titulo": "Helados",
+    "icono": "🍦",
+    "items": [
+      { "nombre": "Zuiso", "precio": 3000 },
+      { "nombre": "Escocés", "precio": 3000 },
+      { "nombre": "Pistacho", "precio": 3000 },
+      { "nombre": "Almendrado", "precio": 3000 },
+      { "nombre": "Trihelado", "precio": 3000 }
+    ]
+  },
+  {
+    "categoria": "gaseosas",
+    "titulo": "Gaseosas",
+    "icono": "�",
+    "items": [
+      { "nombre": "Gaseosa 1.25L", "precio": 4500 },
+      { "nombre": "Acuarius 1.5L", "precio": 5000 }
+    ]
+  }
+]
